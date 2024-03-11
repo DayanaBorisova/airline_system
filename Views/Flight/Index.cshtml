@@ -1,0 +1,52 @@
+﻿﻿@using AirlineSystemApp.Models.Flight
+
+
+@model IEnumerable<FlightViewModel>
+
+<h2>Flights</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var flight in Model)
+    {
+        <tr>
+            <th>@flight.Id</th>
+            <th>@flight.DepartureCity</th>
+            <th>@flight.ArrivalCity</th>
+            <th>@flight.Duration</th>
+            <th>@flight.Price</th>
+            <th>@flight.Capacity</th>
+            <th>
+                    <button>
+                        <a
+                            asp-controller="Flight"
+                            asp-action="Edit"
+                            asp-route-id="@flight.Id">
+                            Edit
+                        </a>
+                    </button>
+                    <button>
+                        <a
+                            asp-controller="Product"
+                            asp-action="Delete"
+                            asp-route-id="@flight.Id">
+                            Delete
+                        </a>
+                    </button>
+            </th>
+            </tr>
+    }
+    </tbody>
+</table>
