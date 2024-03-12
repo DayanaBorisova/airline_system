@@ -1,0 +1,31 @@
+﻿﻿@using AirlineSystemApp.Models.Flight
+
+<h2>New Flight</h2>
+
+<form method="post" asp-controller="Flight" asp-action="Create">
+    <p>
+        <label>Flight Number</label>
+        <input type="text" name="Id" />
+    </p>
+    <p>
+        <label>Departure City</label>
+        <input type="text" name="DepartureCity" />
+    </p>
+    <p>
+        <label>Arrival City</label>
+        <input type="text" name="ArrivalCity" />
+    </p>
+    <p>
+        <label>Duration</label>
+        <input type="number" name="Duration" />
+    </p>
+    <p>
+        <label>Price</label>
+        <input type="number" step="any" name="Price" />
+    </p>
+    <p>
+        <label>Capacity</label>
+        <input type="number" name="Capacity" />
+    </p>
+    <button type="submit">Create</button>
+</form>
