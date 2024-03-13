@@ -1,12 +1,7 @@
 ﻿using AirlineSystemApp.Models;
+using AirlineSystemApp.Models.Flight;
 using AirlineSystemApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AirlineSystemApp.Controllers
 {
@@ -31,38 +26,38 @@ namespace AirlineSystemApp.Controllers
             return View();
         }
 
-        /*[HttpPost]
+        [HttpPost]
         public IActionResult Create(CreateFlightViewModel flight)
         {
-            airlineSystemService.Add(flight);
+            flightService.AddFlight(flight);
 
             return RedirectToAction(nameof(Index));
-        }*/
+        }
 
-       /* public IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            airlineSystemService.Delete(id);
+            flightService.DeleteFlight(id);
 
             return RedirectToAction(nameof(Index));
-        }*/
+        }
 
-        /*public IActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
-            var flight = airlineSystemService.Get(id);
+            var flight = flightService.GetFlight(id);
 
             return View(flight);
-        }*/
+        }
 
-        /*[HttpPost]
+        [HttpPost]
         public IActionResult Edit(EditFlightViewModel flight)
         {
-            flight.Edit(product);
+            flightService.Edit(flight);
 
             return RedirectToAction(nameof(Index));
-        }*/
+        }
 
-/*
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+        /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

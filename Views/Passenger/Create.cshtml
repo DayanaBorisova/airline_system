@@ -1,0 +1,16 @@
+﻿﻿@using AirlineSystemApp.Models.Passenger
+
+<h2>New Flight</h2>
+
+<form method="post" asp-controller="Passenger" asp-action="Create">
+    <p>
+        <label>First Name</label>
+        <input type="text" name="FirstName" />
+    </p>
+    <p>
+        <label>Last Name</label>
+        <input type="text" name="LastName" />
+    </p>
+   
+    <button type="submit">Create</button>
+</form>

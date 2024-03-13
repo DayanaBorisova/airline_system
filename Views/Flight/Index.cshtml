@@ -5,6 +5,8 @@
 
 <h2>Flights</h2>
 
+    <a class="nav-link text-dark" asp-area="" asp-controller="Flight" asp-action="Create">Create Flight</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -14,11 +16,13 @@
             <th>Duration</th>
             <th>Price</th>
             <th>Capacity</th>
+            <th>Is Full</th>
             <th>Actions</th>
         </tr>
     </thead>
 
     <tbody>
+
 @foreach (var flight in Model)
     {
         <tr>
@@ -28,6 +32,7 @@
             <th>@flight.Duration</th>
             <th>@flight.Price</th>
             <th>@flight.Capacity</th>
+            <th>@flight.IsFullyBooked</th>
             <th>
                     <button>
                         <a
@@ -39,7 +44,7 @@
                     </button>
                     <button>
                         <a
-                            asp-controller="Product"
+                            asp-controller="Flight"
                             asp-action="Delete"
                             asp-route-id="@flight.Id">
                             Delete

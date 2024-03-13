@@ -9,16 +9,18 @@
         public double Price { get; set; }
         public int Capacity { get; set; }
 
-        public int IsFullyBooked()
+        public bool IsFullyBooked{ get;}
+        
+
+        public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, double price, int capacity, bool isFullyBooked)
         {
-            if (this.Capacity == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
+            this.Id = id;
+            this.DepartureCity = departureCity;
+            this.ArrivalCity = arrivalCity;
+            this.Duration = duration;
+            this.Price = price;
+            this.Capacity = capacity;
+            this.IsFullyBooked = isFullyBooked;
         }
 
         public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, double price, int capacity)

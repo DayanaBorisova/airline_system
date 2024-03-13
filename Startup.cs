@@ -29,6 +29,9 @@ namespace AirlineSystemApp
 
             services.AddScoped<IFlightRepository, FlightRepository>();
             services.AddScoped<IFlightService, FlightService>();
+            
+            services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IPassengerService, PassengerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

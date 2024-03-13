@@ -5,13 +5,17 @@ namespace AirlineSystemApp.Services.Interfaces
 {
     public interface IFlightService
     {
-        void AddFlight(FlightViewModel flightViewModel);
+        void AddFlight(CreateFlightViewModel flightCreateModel);
+
+        FlightViewModel GetFlight(int id);
+
+        void Edit(EditFlightViewModel flight);
+
+        void DeleteFlight(int id);
         IEnumerable<FlightViewModel> LoadAllFlights();
         void Search();
         void BookSeat();
         void CancelBookedSeat();
-        
-        void DeleteFlight();
         void RegisterPassanger();
     }
 }

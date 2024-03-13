@@ -16,16 +16,49 @@ namespace AirlineSystemApp.Services
             this.flightRepository = flightRepository;
         }
 
-        public void AddFlight(FlightViewModel flightViewModel)
+        public void AddFlight(CreateFlightViewModel flightCreateModel)
         {
             var newFlightEntity = new Flight(
-                flightViewModel.Id,
-                flightViewModel.DepartureCity,
-                flightViewModel.ArrivalCity,
-                flightViewModel.Duration,
-                flightViewModel.Price,
-                flightViewModel.Capacity);
+                flightCreateModel.Id,
+                flightCreateModel.DepartureCity,
+                flightCreateModel.ArrivalCity,
+                flightCreateModel.Duration,
+                flightCreateModel.Price,
+                flightCreateModel.Capacity);
             flightRepository.Add(newFlightEntity);
+        }
+
+        public void Edit(EditFlightViewModel flight)
+        {
+            Flight flightEntity = new Flight(
+                flight.Id,
+                flight.DepartureCity, 
+                flight.ArrivalCity,
+                flight.Duration,
+                flight.Price, 
+                flight.Capacity
+            );
+
+            flightRepository.Edit(flightEntity);
+        }
+
+        public FlightViewModel GetFlight(int id)
+        {
+            Flight flight = flightRepository.Get(id);
+
+            return new FlightViewModel(
+                flight.Id,
+                flight.DepartureCity,
+                flight.ArrivalCity,
+                flight.Duration,
+                flight.Price,
+                flight.Capacity
+                );
+        }
+
+        public void DeleteFlight(int id)
+        {
+            flightRepository.Delete(id);
         }
 
         public void BookSeat()
@@ -34,11 +67,6 @@ namespace AirlineSystemApp.Services
         }
 
         public void CancelBookedSeat()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DeleteFlight()
         {
             throw new System.NotImplementedException();
         }
@@ -52,7 +80,10 @@ namespace AirlineSystemApp.Services
                 flightEntity.ArrivalCity,
                 flightEntity.Duration,
                 flightEntity.Price,
-                flightEntity.Capacity));
+                flightEntity.Capacity,
+               // flightEntity.Capacity == flightEntity.Passengers?.Count
+               false
+                ));
         }
 
         public void RegisterPassanger()

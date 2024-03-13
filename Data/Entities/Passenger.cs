@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AirlineSystemApp.Entities
 {
@@ -13,10 +14,8 @@ namespace AirlineSystemApp.Entities
         [Required]
         public string LastName { get; set; }
 
-        public string PrintAllName()
-        {
-            return $"{FirstName} {LastName}";
-        }
+        public IList<FlightPassenger> FlightPassenger { get; set; }
+        /* public IList<Flight> Flights { get; set; }*/
 
         public Passenger(string firstName, string lastName)
         {
