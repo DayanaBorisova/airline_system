@@ -1,40 +1,42 @@
 ﻿﻿@using AirlineSystemApp.Models.Flight
-
-
 @model IEnumerable<FlightViewModel>
 
-<h2>Flights</h2>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Flight" asp-action="Create">Create Flight</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/airline.css" />
+</head>
+<body>
+
+    <h2>Flights</h2>
     <form asp-controller="Flight">
         <p>
             Departure City: <input type="text" name="SearchDepartureCity" />
-             @*<select asp-for="FlightArrivalCity" asp-items="Model.ArrivalCities">
-            <option value="">All</option>
-        </select>*@
-            <input type="submit" value="Filter" asp-action="Index" method="get"/>
+            <input type="submit" value="Filter" asp-action="Index" method="get" />
             <input type="submit" value="Reset" asp-action="Reset" />
         </p>
     </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>Departure City</th>
-            <th>Arrival City</th>
-            <th>Duration</th>
-            <th>Price</th>
-            <th>Capacity</th>
-            <th>Is Full</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Capacity</th>
+                <th>Is Full</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
+
 
 @foreach (var flight in Model)
     {
-        <tr>
-            <th>@flight.Id</th>
+            <tr>
+             <th>@flight.Id</th>
             <th>@flight.DepartureCity</th>
             <th>@flight.ArrivalCity</th>
             <th>@flight.Duration</th>
@@ -43,13 +45,13 @@
             <th>@flight.IsFullyBooked</th>
             <th>
                 <button>
-                    <a 
+                    <a
                        asp-controller="Flight"
                        asp-action="BookSeat"
                        asp-route-id="@flight.Id">
                        Book Seat
                     </a>
-                </button>  
+                </button>
                 <button>
                     <a
                             asp-controller="Flight"
@@ -69,5 +71,7 @@
             </th>
             </tr>
     }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</body>
+</html>

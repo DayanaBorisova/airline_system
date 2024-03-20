@@ -1,31 +1,40 @@
 ﻿﻿@using AirlineSystemApp.Models.Flight
 
-<h2>New Flight</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Flight</title>
+</head>
+<body>
+    <div class="container-form">
+        <h2>New Flight</h2>
 
-<form method="post" asp-controller="Flight" asp-action="Create">
-    <p>
-        <label>Flight Number</label>
-        <input type="text" name="Id" />
-    </p>
-    <p>
-        <label>Departure City</label>
-        <input type="text" name="DepartureCity" />
-    </p>
-    <p>
-        <label>Arrival City</label>
-        <input type="text" name="ArrivalCity" />
-    </p>
-    <p>
-        <label>Duration</label>
-        <input type="number" name="Duration" />
-    </p>
-    <p>
-        <label>Price</label>
-        <input type="number" step="any" name="Price" />
-    </p>
-    <p>
-        <label>Capacity</label>
-        <input type="number" name="Capacity" />
-    </p>
-    <button type="submit">Create</button>
-</form>
+        <form method="post" asp-controller="Flight" asp-action="Create">
+            <div>
+                <label for="DepartureCity">Departure City</label>
+                <input type="text" name="DepartureCity" />
+            </div>
+            <div>
+                <label for="ArrivalCity">Arrival City</label>
+                <input type="text" name="ArrivalCity" />
+            </div>
+            <div>
+                <label for="Duration">Duration</label>
+                <input type="number" name="Duration" />
+            </div>
+            <div>
+                <label for="Price">Price</label>
+                <input type="text" name="Price" />
+            </div>
+            <div>
+                <label for="Capacity">Capacity</label>
+                <input type="number" name="Capacity" />
+            </div>
+            <button type="submit">Create</button>
+            <button asp-controller="Flight" asp-action="Index" id="cancelButton">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>

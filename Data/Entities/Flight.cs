@@ -18,15 +18,13 @@ namespace AirlineSystemApp.Entities
         public int Duration { get; set; }
 
         [Required]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         [Required]
         public int Capacity { get; set; }
         public virtual IList<FlightPassenger> FlightPassengers { get; set; }
 
-      /*  public virtual IList<Passenger> Passengers { get; set; }*/
-
-        public Flight(int id, string departureCity, string arrivalCity, int duration, double price, int capacity)
+        public Flight(int id, string departureCity, string arrivalCity, int duration, decimal price, int capacity)
         {
             this.Id = id;
             this.DepartureCity = departureCity;

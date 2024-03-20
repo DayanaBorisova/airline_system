@@ -1,0 +1,71 @@
+﻿.container-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #004080;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #004080;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #66a3ff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+button[type="submit"],
+button[type="button"],
+button[id="cancelButton"],
+button[class="actionButton"] {
+    width: 100%;
+    background-color: #004080;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+    button[type="submit"]:hover,
+    button[type="button"]:hover,
+    button[id="cancelButton"]:hover,
+    button[class="actionButton"]:hover {
+        background-color: #003366;
+    }
+
+.nav-link {
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 0 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .nav-link:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }

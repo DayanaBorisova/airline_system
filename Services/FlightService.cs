@@ -65,7 +65,7 @@ namespace AirlineSystemApp.Services
                     flight.Duration,
                     flight.Price,
                     flight.Capacity,
-                    (flight.Capacity > 0) ? false : true,
+                    flight.Capacity > 0 ? false : true,
                     passengerViewModels
                     );
             }
@@ -88,16 +88,6 @@ namespace AirlineSystemApp.Services
 
         public void BookSeat(int flightId, int passengerId)
         {
-            /*Flight flight = flightRepository.Get(flightId);
-            Passenger passenger = passengerRepository.Get(passengerId);
-
-            FlightPassenger flightPassenger = new FlightPassenger
-            {
-                FlightId = flight.Id,
-                PassengerId = passenger.Id
-            };
-            flight.FlightPassengers.Add(flightPassenger);*/
-
             this.flightRepository.BookSeat(flightId, passengerId);
         }
 

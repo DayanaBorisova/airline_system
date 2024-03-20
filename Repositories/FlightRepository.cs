@@ -45,18 +45,14 @@ namespace AirlineSystemApp.Repositories
 
         public void Delete(int id)
         {
-            Flight flightEntity = Get(id);
-            //TODO check flight for null
-            
+            Flight flightEntity = Get(id);            
             this.applicationContext.Flights.Remove(flightEntity);
             this.applicationContext.SaveChanges();
         }
 
         public void Edit(Flight flight)
         {
-            Flight flightEntity = Get(flight.Id);
-            //TODO check flight for null
-            
+            Flight flightEntity = Get(flight.Id);          
             flightEntity.DepartureCity = flight.DepartureCity;
             flightEntity.ArrivalCity = flight.ArrivalCity;
             flightEntity.Duration = flight.Duration;

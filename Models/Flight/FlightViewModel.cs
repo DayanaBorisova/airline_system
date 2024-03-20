@@ -9,7 +9,7 @@ namespace AirlineSystemApp.Models.Flight
         public string DepartureCity { get; set; }
         public string ArrivalCity { get; set; }
         public int Duration { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int Capacity { get; set; }
         public bool IsFullyBooked{ get;}
 
@@ -17,7 +17,7 @@ namespace AirlineSystemApp.Models.Flight
 
         public string? SearchDeparetureCity { get; set; }
 
-        public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, double price, int capacity, bool isFullyBooked, IList<Passenger.PassengerViewModel> passengerViewModels)
+        public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, decimal price, int capacity, bool isFullyBooked, IList<Passenger.PassengerViewModel> passengerViewModels)
         {
             this.Id = id;
             this.DepartureCity = departureCity;
@@ -29,7 +29,7 @@ namespace AirlineSystemApp.Models.Flight
             this.PassengerViewModels = passengerViewModels;
         }
 
-        public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, double price, int capacity, bool isFullyBooked)
+        public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, decimal price, int capacity, bool isFullyBooked)
         {
             this.Id = id;
             this.DepartureCity = departureCity;
@@ -40,7 +40,7 @@ namespace AirlineSystemApp.Models.Flight
             this.IsFullyBooked = isFullyBooked;
         }
 
-    public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, double price, int capacity)
+    public FlightViewModel(int id, string departureCity, string arrivalCity, int duration, decimal price, int capacity)
         {
             this.Id = id;
             this.DepartureCity = departureCity;

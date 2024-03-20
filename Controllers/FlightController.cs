@@ -36,8 +36,8 @@ namespace AirlineSystemApp.Controllers
         [HttpPost]
         public IActionResult Create(CreateFlightViewModel flight)
         {
+            
             flightService.AddFlight(flight);
-
             return RedirectToAction(nameof(Index));
         }
 

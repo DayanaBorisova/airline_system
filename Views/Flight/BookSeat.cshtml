@@ -1,48 +1,59 @@
 ﻿﻿@using AirlineSystemApp.Models.Flight
+@model FlightViewModel
 
-    @model FlightViewModel
-    <h2>Book Seat</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+</head>
+<body>
+    <div class="container-form">
+        <h2>Book Seat</h2>
 
-    <form method="post" asp-controller="Flight" asp-action="BookSeat" asp-route-id="@Model.Id">
-        <p>
-            <label>Flight Number</label>
-            <input type="text" name="FlightId" value="@Model.Id" readonly />
-        </p>
-        <p>
-            <label>Departure City</label>
-            <input type="text" name="DepartureCity" value="@Model.DepartureCity" readonly />
-        </p>
-        <p>
-            <label>Arrival City</label>
-            <input type="text" name="ArrivalCity" value="@Model.ArrivalCity" readonly />
-        </p>
-        <p>
-            <label>Duration</label>
-            <input type="number" name="Duration" value="@Model.Duration" readonly />
-        </p>
-        <p>
-            <label>Price</label>
-            <input type="number" step="any" name="Price" value="@Model.Price" readonly />
-        </p>
-        <p>
-            <label>Capacity</label>
-            <input type="number" name="Capacity" value="@Model.Capacity" readonly />
-        </p>
-        <p>
-            <label>IsFullyBooked</label>
-            <input type="text" name="IsFullyBooked" value="@Model.IsFullyBooked" readonly />
-        </p>
-
-        <p>
-            <label for="PassengerViewModels">Passagers</label>
-            <select asp-for="PassengerViewModels" name="PassengerId">
-                <option selected disabled>Choose</option>
-                @foreach (var p in @Model.PassengerViewModels) //This creates a dropdown of all the peoples names received from the database
-                {
-                <option value=@p.Id>@p.PrintAllName</option>
-                }
-            </select>
-        </p>
-        <button type="submit">Book</button>
-        <button asp-controller="Flight" asp-action="Index">Cancel</button>
-    </form>
+        <form method="post" asp-controller="Flight" asp-action="BookSeat" asp-route-id="@Model.Id">
+            <div>
+                <label>Flight Number</label>
+                <input type="text" name="FlightId" value="@Model.Id" readonly />
+            </div>
+            <div>
+                <label>Departure City</label>
+                <input type="text" name="DepartureCity" value="@Model.DepartureCity" readonly />
+            </div>
+            <div>
+                <label>Arrival City</label>
+                <input type="text" name="ArrivalCity" value="@Model.ArrivalCity" readonly />
+            </div>
+            <div>
+                <label>Duration</label>
+                <input type="number" name="Duration" value="@Model.Duration" readonly />
+            </div>
+            <div>
+                <label>Price</label>
+                <input type="text" name="Price" value="@Model.Price" readonly />
+            </div>
+            <div>
+                <label>Capacity</label>
+                <input type="number" name="Capacity" value="@Model.Capacity" readonly />
+            </div>
+            <div>
+                <label>Is Fully Booked</label>
+                <input type="text" name="IsFullyBooked" value="@Model.IsFullyBooked" readonly />
+            </div>
+            <div>
+                <label for="PassengerViewModels">Passagers</label>
+                <select asp-for="PassengerViewModels" name="PassengerId">
+                    <option selected disabled>Choose</option>
+                    @foreach (var p in @Model.PassengerViewModels) //This creates a dropdown of all the peoples names received from the database
+                    {
+                    <option value=@p.Id>@p.PrintAllName</option>
+                    }
+                </select>
+            </div>
+            <button type="submit">Book</button>
+            <button asp-controller="Flight" asp-action="Index" id="cancelButton">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>
