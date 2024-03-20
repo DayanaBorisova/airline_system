@@ -14,8 +14,8 @@ namespace AirlineSystemApp.Entities
         [Required]
         public string LastName { get; set; }
 
-        public IList<FlightPassenger> FlightPassenger { get; set; }
-        /* public IList<Flight> Flights { get; set; }*/
+        public virtual ICollection<FlightPassenger> FlightPassengers { get; set; }
+/*        public virtual ICollection<Flight> Flights { get; set; }*/
 
         public Passenger(string firstName, string lastName)
         {

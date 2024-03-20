@@ -313,3 +313,4 @@ C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\AirlineS
 C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\AirlineSystemApp.genruntimeconfig.cache
 C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Views\Flight\Edit.cshtml.g.cs
 C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Views\Passenger\Create.cshtml.g.cs
+C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Views\Flight\BookSeat.cshtml.g.cs

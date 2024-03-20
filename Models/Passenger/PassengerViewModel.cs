@@ -6,9 +6,19 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string PrintAllName()
+        public string PrintAllName { 
+            get
+            {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+        
+
+        public PassengerViewModel(int id, string firstName, string lastName)
         {
-            return $"{FirstName} {LastName}";
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
     }
 }

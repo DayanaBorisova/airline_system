@@ -10,7 +10,6 @@ namespace AirlineSystemApp.Repositories
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Flight> Flights { get; set; }
 
-
         public ApplicationContext(DbContextOptions<ApplicationContext> options) 
             : base(options)
         { }
@@ -22,12 +21,12 @@ namespace AirlineSystemApp.Repositories
 
             modelBuilder.Entity<FlightPassenger>()
                 .HasOne<Flight>(fp => fp.Flight)
-                .WithMany(f => f.FlightPassenger)
+                .WithMany(f => f.FlightPassengers)
                 .HasForeignKey(fp => fp.FlightId);
 
             modelBuilder.Entity<FlightPassenger>()
                 .HasOne<Passenger>(fp => fp.Passenger)
-                .WithMany(p => p.FlightPassenger)
+                .WithMany(p => p.FlightPassengers)
                 .HasForeignKey(fp => fp.PassengerId);
         }
     }

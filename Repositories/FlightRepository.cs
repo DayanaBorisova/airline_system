@@ -22,7 +22,25 @@ namespace AirlineSystemApp.Repositories
 
         public Flight Get(int id)
         {
-            return this.applicationContext.Flights.FirstOrDefault(flight => flight.Id == id);
+            var flightsWithPassengers = from flight in applicationContext.Flights
+                                        join flightPassenger in applicationContext.FlightPassenger
+                                        on flight.Id equals flightPassenger.FlightId
+                                        join passenger in applicationContext.Passengers
+                                        on flightPassenger.PassengerId equals passenger.Id
+                                        select new { Flight = flight, FlightPassenger = flightPassenger };
+
+            var groupedPassengers = flightsWithPassengers
+                .AsEnumerable()
+                .GroupBy(fp => fp.Flight.Id)
+                                                   .ToDictionary(g => g.Key, g => g.Select(fp => fp.FlightPassenger).ToList());
+            
+            var flightEntity = applicationContext.Flights.FirstOrDefault(f => f.Id == id);
+            if (flightEntity != null)
+            {
+                flightEntity.FlightPassengers = groupedPassengers.ContainsKey(id) ? groupedPassengers[id] : new List<FlightPassenger>();
+            }
+
+            return flightEntity;
         }
 
         public void Delete(int id)
@@ -51,6 +69,32 @@ namespace AirlineSystemApp.Repositories
         public IEnumerable<Flight> GetAll()
         {
             return this.applicationContext.Flights.ToList();
+        }
+
+        public bool BookSeat(int flightId, int passengerId)
+        {
+            var flight = this.applicationContext.Flights.Find(flightId);
+            if (flight == null || flight.Capacity <= 0)
+            {
+                return false; // Flight not found or no available seats
+            }
+
+            var passenger = this.applicationContext.Passengers.Find(passengerId);
+            if (passenger == null)
+            {
+                return false; // Passenger not found
+            }
+
+            var reservation = new FlightPassenger
+            {
+                FlightId = flightId,
+                Passenger = passenger
+            };
+
+            this.applicationContext.FlightPassenger.Add(reservation);
+            flight.Capacity--;
+            this.applicationContext.SaveChanges();
+            return true;
         }
     }
 }

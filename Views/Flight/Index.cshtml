@@ -4,9 +4,17 @@
 @model IEnumerable<FlightViewModel>
 
 <h2>Flights</h2>
-
     <a class="nav-link text-dark" asp-area="" asp-controller="Flight" asp-action="Create">Create Flight</a>
-
+    <form asp-controller="Flight">
+        <p>
+            Departure City: <input type="text" name="SearchDepartureCity" />
+             @*<select asp-for="FlightArrivalCity" asp-items="Model.ArrivalCities">
+            <option value="">All</option>
+        </select>*@
+            <input type="submit" value="Filter" asp-action="Index" method="get"/>
+            <input type="submit" value="Reset" asp-action="Reset" />
+        </p>
+    </form>
 <table class="table">
     <thead>
         <tr>
@@ -34,22 +42,30 @@
             <th>@flight.Capacity</th>
             <th>@flight.IsFullyBooked</th>
             <th>
-                    <button>
-                        <a
+                <button>
+                    <a 
+                       asp-controller="Flight"
+                       asp-action="BookSeat"
+                       asp-route-id="@flight.Id">
+                       Book Seat
+                    </a>
+                </button>  
+                <button>
+                    <a
                             asp-controller="Flight"
                             asp-action="Edit"
                             asp-route-id="@flight.Id">
                             Edit
-                        </a>
-                    </button>
-                    <button>
-                        <a
+                    </a>
+                  </button>
+                  <button>
+                    <a
                             asp-controller="Flight"
                             asp-action="Delete"
                             asp-route-id="@flight.Id">
                             Delete
-                        </a>
-                    </button>
+                    </a>
+                  </button>
             </th>
             </tr>
     }

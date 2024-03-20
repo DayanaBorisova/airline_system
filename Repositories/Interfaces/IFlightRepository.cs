@@ -14,5 +14,7 @@ namespace AirlineSystemApp.Repositories.Interfaces
         public void Delete(int id);
 
         public IEnumerable<Flight> GetAll();
+
+        public bool BookSeat(int flightId, int passengerId);
     }
 }

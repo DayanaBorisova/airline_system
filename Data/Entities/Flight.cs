@@ -22,9 +22,9 @@ namespace AirlineSystemApp.Entities
 
         [Required]
         public int Capacity { get; set; }
-        public IList<FlightPassenger> FlightPassenger { get; set; }
+        public virtual IList<FlightPassenger> FlightPassengers { get; set; }
 
-       /* public IEnumerable<Passenger> Passengers { get; set; }*/
+      /*  public virtual IList<Passenger> Passengers { get; set; }*/
 
         public Flight(int id, string departureCity, string arrivalCity, int duration, double price, int capacity)
         {

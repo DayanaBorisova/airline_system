@@ -2,6 +2,8 @@
 using AirlineSystemApp.Models.Flight;
 using AirlineSystemApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
 namespace AirlineSystemApp.Controllers
 {
@@ -14,9 +16,14 @@ namespace AirlineSystemApp.Controllers
             this.flightService = flightService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchDepartureCity)
         {
             var flights = flightService.LoadAllFlights();
+
+            if (!String.IsNullOrEmpty(searchDepartureCity))
+            {
+                flights = flights.Where(f => f.DepartureCity.Equals(searchDepartureCity));
+            }
 
             return View(flights);
         }
@@ -52,6 +59,27 @@ namespace AirlineSystemApp.Controllers
         public IActionResult Edit(EditFlightViewModel flight)
         {
             flightService.Edit(flight);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult Reset()
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult BookSeat(int id)
+        {
+            var flight = flightService.GetFlight(id, true);
+
+            return View(flight);
+        }
+
+        [HttpPost]
+        public IActionResult BookSeat(BookSeatViewModel bookSeatModel)
+        {
+            flightService.BookSeat(bookSeatModel.FlightId, bookSeatModel.PassengerId);
 
             return RedirectToAction(nameof(Index));
         }

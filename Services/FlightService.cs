@@ -1,5 +1,6 @@
 ﻿using AirlineSystemApp.Entities;
 using AirlineSystemApp.Models.Flight;
+using AirlineSystemApp.Models.Passenger;
 using AirlineSystemApp.Repositories.Interfaces;
 using AirlineSystemApp.Services.Interfaces;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace AirlineSystemApp.Services
     public class FlightService : IFlightService
     {
         private readonly IFlightRepository flightRepository;
+        private readonly IPassengerRepository passengerRepository;
 
-        public FlightService(IFlightRepository flightRepository)
+        public FlightService(IFlightRepository flightRepository, IPassengerRepository passengerRepository)
         {
             this.flightRepository = flightRepository;
+            this.passengerRepository = passengerRepository;
         }
 
         public void AddFlight(CreateFlightViewModel flightCreateModel)
@@ -42,11 +45,32 @@ namespace AirlineSystemApp.Services
             flightRepository.Edit(flightEntity);
         }
 
-        public FlightViewModel GetFlight(int id)
+        public FlightViewModel GetFlight(int id, bool withPassengerList)
         {
-            Flight flight = flightRepository.Get(id);
+            var flight = flightRepository.Get(id);
 
-            return new FlightViewModel(
+            if (withPassengerList)
+            {
+                IList<Passenger> passengerEntities = passengerRepository.GetAll().ToList();
+                IList<PassengerViewModel> passengerViewModels = passengerEntities.Select(passengerEntity => new PassengerViewModel(
+                    passengerEntity.Id,
+                    passengerEntity.FirstName,
+                    passengerEntity.LastName
+                 )).ToList();
+
+                return new FlightViewModel(
+                    flight.Id,
+                    flight.DepartureCity,
+                    flight.ArrivalCity,
+                    flight.Duration,
+                    flight.Price,
+                    flight.Capacity,
+                    (flight.Capacity > 0) ? false : true,
+                    passengerViewModels
+                    );
+            }
+            else {
+                return new FlightViewModel(
                 flight.Id,
                 flight.DepartureCity,
                 flight.ArrivalCity,
@@ -54,6 +78,7 @@ namespace AirlineSystemApp.Services
                 flight.Price,
                 flight.Capacity
                 );
+            }
         }
 
         public void DeleteFlight(int id)
@@ -61,9 +86,19 @@ namespace AirlineSystemApp.Services
             flightRepository.Delete(id);
         }
 
-        public void BookSeat()
+        public void BookSeat(int flightId, int passengerId)
         {
-            throw new System.NotImplementedException();
+            /*Flight flight = flightRepository.Get(flightId);
+            Passenger passenger = passengerRepository.Get(passengerId);
+
+            FlightPassenger flightPassenger = new FlightPassenger
+            {
+                FlightId = flight.Id,
+                PassengerId = passenger.Id
+            };
+            flight.FlightPassengers.Add(flightPassenger);*/
+
+            this.flightRepository.BookSeat(flightId, passengerId);
         }
 
         public void CancelBookedSeat()
@@ -74,6 +109,7 @@ namespace AirlineSystemApp.Services
         public IEnumerable<FlightViewModel> LoadAllFlights()
         {
             var flightEntities = this.flightRepository.GetAll();
+            
             return flightEntities.Select(flightEntity => new FlightViewModel(
                 flightEntity.Id,
                 flightEntity.DepartureCity,
@@ -81,8 +117,7 @@ namespace AirlineSystemApp.Services
                 flightEntity.Duration,
                 flightEntity.Price,
                 flightEntity.Capacity,
-               // flightEntity.Capacity == flightEntity.Passengers?.Count
-               false
+                (flightEntity.Capacity > 0)? false : true
                 ));
         }
 
