@@ -33,42 +33,50 @@
         <tbody>
 
 
+
 @foreach (var flight in Model)
     {
             <tr>
-             <th>@flight.Id</th>
+            <th>@flight.Id</th>
             <th>@flight.DepartureCity</th>
             <th>@flight.ArrivalCity</th>
             <th>@flight.Duration</th>
             <th>@flight.Price</th>
             <th>@flight.Capacity</th>
-            <th>@flight.IsFullyBooked</th>
+             @if (!@flight.IsFullyBooked)
+            {
+            <th>not full</th>
+            }
+            else
+            {
+            <th class="full">full</th>
+            }
             <th>
+                @if (!@flight.IsFullyBooked)
+                    {
+                    <button>
+                        <a asp-controller="Flight"
+                           asp-action="BookSeat"
+                           asp-route-id="@flight.Id">
+                            Book Seat
+                        </a>
+                        </button>
+                }
                 <button>
-                    <a
-                       asp-controller="Flight"
-                       asp-action="BookSeat"
+                    <a asp-controller="Flight"
+                       asp-action="Edit"
                        asp-route-id="@flight.Id">
-                       Book Seat
+                        Edit
                     </a>
                 </button>
                 <button>
-                    <a
-                            asp-controller="Flight"
-                            asp-action="Edit"
-                            asp-route-id="@flight.Id">
-                            Edit
+                    <a asp-controller="Flight"
+                       asp-action="Delete"
+                       asp-route-id="@flight.Id">
+                        Delete
                     </a>
-                  </button>
-                  <button>
-                    <a
-                            asp-controller="Flight"
-                            asp-action="Delete"
-                            asp-route-id="@flight.Id">
-                            Delete
-                    </a>
-                  </button>
-            </th>
+                </button>
+                </th>
             </tr>
     }
         </tbody>

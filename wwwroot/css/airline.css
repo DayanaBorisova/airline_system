@@ -69,3 +69,7 @@ button[class="actionButton"] {
         background-color: #0056b3;
         color: #fff;
     }
+
+.full {
+    color: #f53d3d;
+}

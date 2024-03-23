@@ -15,7 +15,6 @@ namespace AirlineSystemApp.Entities
         public string LastName { get; set; }
 
         public virtual ICollection<FlightPassenger> FlightPassengers { get; set; }
-/*        public virtual ICollection<Flight> Flights { get; set; }*/
 
         public Passenger(string firstName, string lastName)
         {

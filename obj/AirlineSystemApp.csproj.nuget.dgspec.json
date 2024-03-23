@@ -1,32 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rayay\\Downloads\\airline_system\\AirlineSystemApp.csproj": {}
+    "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\AirlineSystemApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rayay\\Downloads\\airline_system\\AirlineSystemApp.csproj": {
+    "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\AirlineSystemApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rayay\\Downloads\\airline_system\\AirlineSystemApp.csproj",
+        "projectUniqueName": "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\AirlineSystemApp.csproj",
         "projectName": "AirlineSystemApp",
-        "projectPath": "C:\\Users\\rayay\\Downloads\\airline_system\\AirlineSystemApp.csproj",
-        "packagesPath": "C:\\Users\\rayay\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rayay\\Downloads\\airline_system\\obj\\",
+        "projectPath": "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\AirlineSystemApp.csproj",
+        "packagesPath": "C:\\Users\\DAQNA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rayay\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\DAQNA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -91,17 +85,10 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.32, 3.1.32]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -110,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     }

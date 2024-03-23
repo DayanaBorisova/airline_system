@@ -12,7 +12,6 @@
                 return this.FirstName + " " + this.LastName;
             }
         }
-        
 
         public PassengerViewModel(int id, string firstName, string lastName)
         {
