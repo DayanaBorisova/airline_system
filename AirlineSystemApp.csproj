@@ -25,4 +25,8 @@
 	  <PackageReference Include="xunit" Version="2.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

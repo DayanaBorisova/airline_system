@@ -14,23 +14,23 @@
         <form method="post" asp-controller="Flight" asp-action="Create">
             <div>
                 <label for="DepartureCity">Departure City</label>
-                <input type="text" name="DepartureCity" />
+                <input type="text" id="DepartureCity" name="DepartureCity" />
             </div>
             <div>
                 <label for="ArrivalCity">Arrival City</label>
-                <input type="text" name="ArrivalCity" />
+                <input type="text" id="ArrivalCity"name="ArrivalCity" />
             </div>
             <div>
                 <label for="Duration">Duration</label>
-                <input type="number" name="Duration" />
+                <input type="number" id ="Duration"name="Duration" />
             </div>
             <div>
                 <label for="Price">Price</label>
-                <input type="text" name="Price" />
+                <input  type="text" id="Price" name="Price" />
             </div>
             <div>
                 <label for="Capacity">Capacity</label>
-                <input type="number" name="Capacity" />
+                <input type="number" id="Capacity"name="Capacity" />
             </div>
             <button type="submit">Create</button>
             <button asp-controller="Flight" asp-action="Index" id="cancelButton">Cancel</button>
