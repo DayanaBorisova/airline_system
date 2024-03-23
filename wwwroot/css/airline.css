@@ -11,6 +11,7 @@
         h2 {
             color: #004080;
             margin-bottom: 20px;
+           
         }
 
         label {
@@ -44,6 +45,7 @@ button[class="actionButton"] {
     transition: background-color 0.3s ease;
     font-size: 16px;
     margin-top: 20px;
+    
 }
 
     button[type="submit"]:hover,
@@ -73,3 +75,4 @@ button[class="actionButton"] {
 .full {
     color: #f53d3d;
 }
+

@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="AirlineSystem_Tests\**" />
+    <Compile Remove="wwwroot\images\**" />
     <Content Remove="AirlineSystem_Tests\**" />
+    <Content Remove="wwwroot\images\**" />
     <EmbeddedResource Remove="AirlineSystem_Tests\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
     <None Remove="AirlineSystem_Tests\**" />
+    <None Remove="wwwroot\images\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
+    <Content Update="wwwroot\photo\flight_logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
