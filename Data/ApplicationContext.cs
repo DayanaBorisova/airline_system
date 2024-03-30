@@ -1,10 +1,13 @@
-﻿using AirlineSystemApp.Entities;
+﻿using AirlineSystemApp.Data.Entities;
+using AirlineSystemApp.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace AirlineSystemApp.Repositories
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext<User>
     {
         public DbSet<FlightPassenger> FlightPassenger { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
@@ -16,6 +19,10 @@ namespace AirlineSystemApp.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserRole<string>>().HasNoKey();
+            modelBuilder.Entity<IdentityUserToken<string>>().HasNoKey();
+
             modelBuilder.Entity<FlightPassenger>()
                 .HasKey(fp => new { fp.FlightId, fp.PassengerId });
 
