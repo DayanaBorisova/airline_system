@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
 using AirlineSystemApp.Data.Entities;
+using System;
+using AirlineSystemApp.Data.Constants;
+using System.Threading.Tasks;
 using AirlineSystemApp.Data;
 
 namespace AirlineSystemApp
@@ -29,16 +32,29 @@ namespace AirlineSystemApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options =>
-            options.UseMySql(Configuration.GetConnectionString("AirlineSystemAppContextConnection")));
+            {
+                options.UseMySql(Configuration.GetConnectionString("AirlineSystemAppContextConnection"));
+                options.UseLazyLoadingProxies();
+            }             
+            );
 
             services.AddScoped<IFlightRepository, FlightRepository>();
             services.AddScoped<IFlightService, FlightService>();
-            
+
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IPassengerService, PassengerService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddAuthorization(options =>
+            {
+                foreach (var role in Enum.GetNames(typeof(UserRolesEnum)))
+                {
+                    options.AddPolicy(role, policy => policy.RequireRole(role));
+                }
+            }
+            );
 
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -47,7 +63,6 @@ namespace AirlineSystemApp
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequiredLength = 4;
-                options.SignIn.RequireConfirmedAccount = true;
             }).AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddRazorPages();
@@ -55,7 +70,7 @@ namespace AirlineSystemApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IUserService userService)
         {
             if (env.IsDevelopment())
             {
@@ -70,7 +85,9 @@ namespace AirlineSystemApp
 
             app.UseRouting();
 
-            DataSeed.SeedUserRoles(app);
+            //DataSeed.SeedUserRoles(app);
+            CreateInitialUsers(userService).Wait();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -82,6 +99,13 @@ namespace AirlineSystemApp
 
                 endpoints.MapRazorPages();
             });
+        }
+
+        private async Task CreateInitialUsers(IUserService userService)
+        {
+            await userService.SeedUserWithRoleAsync("admin@example.com", "Admin123!", UserRolesEnum.Admin);
+            await userService.SeedUserWithRoleAsync("operator@example.com", "Operator123!", UserRolesEnum.Operator);
+            await userService.SeedUserWithRoleAsync("user@example.com", "User123!", UserRolesEnum.User);
         }
     }
 }

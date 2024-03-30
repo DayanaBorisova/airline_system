@@ -1,6 +1,6 @@
 ﻿namespace AirlineSystemApp.Data.Constants
 {
-    public enum UserRoles
+    public enum UserRolesEnum
     {
         User,
         Operator,

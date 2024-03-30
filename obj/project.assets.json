@@ -461,6 +461,19 @@
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Proxies/3.1.23": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.4.0",
+          "Microsoft.EntityFrameworkCore": "3.1.23"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Proxies.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Proxies.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/3.1.32": {
         "type": "package",
         "dependencies": {
@@ -2968,6 +2981,20 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.3.1.32.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Proxies/3.1.23": {
+      "sha512": "TBBtVGrzHgWDrzHdt1uJV9MRvSHLUwvb3wb9HydiSSsVkb8j+Blxz3Obr+J/yEQqk3QWrLYF+wwNdqua5UN3tw==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.proxies/3.1.23",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Proxies.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Proxies.xml",
+        "microsoft.entityframeworkcore.proxies.3.1.23.nupkg.sha512",
+        "microsoft.entityframeworkcore.proxies.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/3.1.32": {
@@ -7710,6 +7737,7 @@
       "Microsoft.AspNetCore.Identity.UI >= 3.1.32",
       "Microsoft.Bcl.AsyncInterfaces >= 6.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.32",
+      "Microsoft.EntityFrameworkCore.Proxies >= 3.1.23",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.32",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
       "Moq >= 4.20.70",
@@ -7780,6 +7808,10 @@
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[3.1.32, )"
+          },
+          "Microsoft.EntityFrameworkCore.Proxies": {
+            "target": "Package",
+            "version": "[3.1.23, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

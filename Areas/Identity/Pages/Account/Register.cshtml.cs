@@ -72,7 +72,7 @@ namespace AirlineSystemApp.Areas.Identity.Pages.Account
                 {
                     try
                     {
-                        await _userManager.AddToRoleAsync(user, UserRoles.User.ToString());
+                        await _userManager.AddToRoleAsync(user, UserRolesEnum.User.ToString());
                     }
                     catch (Exception)
                     {

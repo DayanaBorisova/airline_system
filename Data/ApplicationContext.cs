@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AirlineSystemApp.Repositories
 {
-    public class ApplicationContext : IdentityDbContext<User>
+    public class ApplicationContext : IdentityDbContext<User, IdentityRole, string>
     {
         public DbSet<FlightPassenger> FlightPassenger { get; set; }
         public DbSet<Passenger> Passengers { get; set; }

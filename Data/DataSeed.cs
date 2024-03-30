@@ -16,7 +16,7 @@ namespace AirlineSystemApp.Data
             {
                 var dbContext = serviceScope.ServiceProvider.GetService<ApplicationContext>();
 
-                var roles = Enum.GetValues(typeof(UserRoles));
+                var roles = Enum.GetValues(typeof(UserRolesEnum));
                 foreach (var role in roles)
                 {
                     var roleName = role.ToString();

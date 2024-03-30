@@ -15,13 +15,36 @@ namespace AirlineSystemApp.Services
     {
         private readonly IUserRepository userRepository;
         private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public UserService(
             IUserRepository userRepository,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             this.userRepository = userRepository;
             this.userManager = userManager;
+            this.roleManager = roleManager;
+        }
+
+        public async Task SeedUserWithRoleAsync(string email, string password, UserRolesEnum role)
+        {
+            if (await userManager.FindByEmailAsync(email) == null)
+                {
+                    var user = CreateUser(email);
+                    var result = await userManager.CreateAsync(user, password);
+
+                    if (result.Succeeded)
+                    {
+                        if (!await roleManager.RoleExistsAsync(role.ToString()))
+                        {
+                            await roleManager.CreateAsync(new IdentityRole(role.ToString()));
+                        }
+
+                        await userManager.AddToRoleAsync(user, role.ToString());
+                        
+                    }
+                }
         }
 
         public IEnumerable<UserViewModel> GetAll()
@@ -31,7 +54,7 @@ namespace AirlineSystemApp.Services
         {
             var users = new List<UserViewModel>();
 
-            var userRoles = Enum.GetValues(typeof(UserRoles));
+            var userRoles = Enum.GetValues(typeof(UserRolesEnum));
             foreach (var role in userRoles)
             {
                 var usersInRoleEntities = await userManager.GetUsersInRoleAsync(role.ToString());
@@ -43,5 +66,15 @@ namespace AirlineSystemApp.Services
 
             return users;
         }
+
+
+        private User CreateUser(string email)
+            => new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Email = email,
+                UserName = email,
+                Name = email
+            };
     }
 }

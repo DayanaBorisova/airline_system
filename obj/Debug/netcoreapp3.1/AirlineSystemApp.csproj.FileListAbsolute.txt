@@ -489,3 +489,4 @@ C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Ar
 C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\DAQNA\Documents\project\airline_system\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\DAQNA\Documents\project\airline_system\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\DAQNA\Documents\project\airline_system\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll

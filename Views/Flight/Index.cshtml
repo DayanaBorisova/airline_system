@@ -64,7 +64,8 @@
              @if (User.Identity?.IsAuthenticated ?? false)
             {
             <th>
-            @if (!@flight.IsFullyBooked && User.IsInRole(UserRoles.Operator.ToString()))
+@if (!@flight.IsFullyBooked
+                && (User.IsInRole(UserRolesEnum.Admin.ToString()) || User.IsInRole(UserRolesEnum.Operator.ToString())))
                 {
                 <button>
                     <a asp-controller="Flight"
@@ -75,7 +76,7 @@
                 </button>
             }
 
-            @if (User.IsInRole(UserRoles.Admin.ToString()))
+@if (User.IsInRole(UserRolesEnum.Admin.ToString()))
                 {
             <button>
                 <a asp-controller="Flight"

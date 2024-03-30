@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EWE2XRK7BbZqTAi3fq1w1UfLpM9GpcCo6fMMdUClrXmE5EKb08VQ0ASzERu8Vo6wHKj3UQoNl411yjoQq6PDtA==",
+  "dgSpecHash": "UZCkfwNCUqooP/gnMXQS2J0v9O/SnSBN5XJXQYEjDQ47OeD743A7FEHl/yjLnU1+Jyoyk1NqXGf3+2z2BU2x2w==",
   "success": true,
   "projectFilePath": "C:\\Users\\DAQNA\\Documents\\project\\airline_system\\AirlineSystemApp.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.32\\microsoft.entityframeworkcore.abstractions.3.1.32.nupkg.sha512",
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.32\\microsoft.entityframeworkcore.analyzers.3.1.32.nupkg.sha512",
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.32\\microsoft.entityframeworkcore.design.3.1.32.nupkg.sha512",
+    "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\3.1.23\\microsoft.entityframeworkcore.proxies.3.1.23.nupkg.sha512",
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.32\\microsoft.entityframeworkcore.relational.3.1.32.nupkg.sha512",
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.32\\microsoft.entityframeworkcore.tools.3.1.32.nupkg.sha512",
     "C:\\Users\\DAQNA\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.32\\microsoft.extensions.caching.abstractions.3.1.32.nupkg.sha512",
